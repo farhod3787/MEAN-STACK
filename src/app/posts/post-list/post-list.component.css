@@ -1,0 +1,16 @@
+: head {
+    display: block;
+    margin-top: 1rem
+}
+
+mat-spinner {
+    margin: auto
+}
+
+.image-path {
+    width: 100%
+}
+
+.image-path img {
+    width: 100%;
+}

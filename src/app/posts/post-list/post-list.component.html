@@ -1,0 +1,35 @@
+<mat-spinner *ngIf = "isLoad" ></mat-spinner>
+
+<mat-accordion multi = "true" *ngIf = "!isLoad">
+  <mat-expansion-panel *ngFor = "let post of posts">
+    <mat-expansion-panel-header>
+      <p> {{post.title}} </p>
+    </mat-expansion-panel-header>
+    <div class="image-path">
+      <a target="blank" href="{{post.imagePath}}"><img [src]="post.imagePath" [alt]="post.title"></a>
+    </div>    
+    <p> {{post.content}} </p>
+    <mat-action-row>
+      <a mat-button color = "primary" [routerLink] = "['/edit', post.id]" >EDIT</a>
+      <button mat-button (click) = "delete(post.id)" color = "warn">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>   <br>
+<mat-paginator [length]="totalPost" [pageSize] = "postsPerPage" 
+[pageSizeOptions] = "pageSizeOption" (page) = "onChangedPage($event)" ></mat-paginator>
+<p class="mat-body-1" *ngIf = "posts.length <= 0 && !isLoad">No comment</p>
+
+
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Enter Phone Number" #name2 prefix="+998 " mask="(00) 000 00 00"  >
+</mat-form-field>
+
+<!-- <input #name type='text' [specialCharacters]="[ '[' ,']' , '\\' ]" mask="[00]\[000]\[00]\[00]" >  <br> -->
+<!-- <input type='text' [patterns]="customPatterns" mask="(000-000)" >  -->
+<!-- <input  #name2 type='text' placeholder="Enter Phone number" prefix="+998 " mask="(00) 000 00 00" > -->
+<br>
+<!-- <input type='text' suffix=" $" mask="0000" > <br> -->
+<!-- <input type='text' [dropSpecialCharacters]="false" mask="000-000.00" ><br> -->
+
+<button (click)="ok(name2.value)">OK</button>
